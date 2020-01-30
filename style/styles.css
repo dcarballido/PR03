@@ -1,0 +1,39 @@
+/* Propiedades Principales */
+
+@font-face {
+    font-family: "Sanfrancisco";
+    src: url('SFUIText-Light.otf');
+  }
+
+body{
+    margin: 0px;
+    font-family: "Sanfrancisco";
+}
+
+/* Pagina Principal */
+.mycontacts{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.barra1{
+    width: 249px;
+    min-width: 249px;
+    background-color: blueviolet;
+    
+}
+
+.barra2{
+    width: 380px;
+    min-width: 380px;
+    background-color: brown;
+}
+
+.barra3{
+    width: 1034px;
+    background-color: chocolate;
+}
