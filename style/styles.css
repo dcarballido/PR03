@@ -10,6 +10,36 @@ body{
     font-family: "Sanfrancisco";
 }
 
+/* Login */
+.cajausu {
+    width: 300px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #EAE3D7;
+    font-size: 17px;
+    text-indent:10%;
+}
+.fa-arrow-alt-circle-right {
+    color: #CFCBC4;
+    margin-left: -50px;
+    text-decoration: none;
+     width: 0px;
+     height: 0px;
+     border:0;
+     background-color: white;
+}
+.cajacontra {
+    width: 300px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #EAE3D7;
+    font-size: 17px;
+    text-indent:10%;
+}
+.tablainicio {
+    margin-top: 150px;
+}
+
 /* Pagina Principal */
 .mycontacts{
     width: 100%;
