@@ -2,31 +2,34 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jan 30, 2020 at 03:04 PM
--- Server version: 5.7.26
--- PHP Version: 7.3.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-02-2020 a las 17:00:11
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `mycontactsdb`
+-- Base de datos: `20200130_bbdd_mycontacts_con_datos`
 --
-CREATE DATABASE IF NOT EXISTS `mycontactsdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `mycontactsdb`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
---
--- Creation: Jan 30, 2020 at 02:29 PM
--- Last update: Jan 30, 2020 at 03:02 PM
+-- Estructura de tabla para la tabla `contact`
 --
 
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id_contact` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact` (
+  `id_contact` int(11) NOT NULL,
   `firstname_contact` varchar(255) NOT NULL,
   `lastname_contact` varchar(255) NOT NULL,
   `phone1_contact` varchar(255) NOT NULL,
@@ -36,13 +39,11 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `email2_contact` varchar(255) DEFAULT NULL,
   `location1_contact` varchar(255) DEFAULT NULL,
   `location2_contact` varchar(255) DEFAULT NULL,
-  `id_user_contact` int(11) NOT NULL,
-  PRIMARY KEY (`id_contact`),
-  KEY `fk_user_contact` (`id_user_contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `id_user_contact` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `contact`
+-- Volcado de datos para la tabla `contact`
 --
 
 INSERT INTO `contact` (`id_contact`, `firstname_contact`, `lastname_contact`, `phone1_contact`, `phone2_contact`, `phone3_contact`, `email1_contact`, `email2_contact`, `location1_contact`, `location2_contact`, `id_user_contact`) VALUES
@@ -59,38 +60,73 @@ INSERT INTO `contact` (`id_contact`, `firstname_contact`, `lastname_contact`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
--- Creation: Jan 30, 2020 at 08:23 AM
--- Last update: Jan 30, 2020 at 02:40 PM
+-- Estructura de tabla para la tabla `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `id_mycontacts` varchar(255) NOT NULL,
   `firstname_user` varchar(255) NOT NULL,
   `lastname_user` varchar(255) NOT NULL,
   `password_user` varchar(255) NOT NULL,
   `email_user` varchar(255) NOT NULL,
   `phone_user` varchar(255) NOT NULL,
-  `location_user` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `location_user` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `firstname_user`, `lastname_user`, `password_user`, `email_user`, `phone_user`, `location_user`) VALUES
-(1, 'Diego', 'Carballido Valle', '81dc9bdb52d04dc20036dbd8313ed055', 'diego.carballido@icloud.com', '619500622', NULL),
-(2, 'Alex', 'Salas Molina', '81dc9bdb52d04dc20036dbd8313ed055', 'alex.salas@gmail.com', '653472408', NULL),
-(3, 'Sergio', 'Rueda Jiménez', '81dc9bdb52d04dc20036dbd8313ed055', 'sergio.rueda@gmail.com', '654789321', NULL);
+INSERT INTO `user` (`id_user`, `id_mycontacts`, `firstname_user`, `lastname_user`, `password_user`, `email_user`, `phone_user`, `location_user`) VALUES
+(1, 'dcarballido', 'Diego', 'Carballido', '81dc9bdb52d04dc20036dbd8313ed055', 'd.carballido@gmail.com', '3453453451', NULL),
+(2, 'asalas', 'Alex', 'Salas', '81dc9bdb52d04dc20036dbd8313ed055', 'a.salas@gmail.com', '3453453452', NULL),
+(3, 'srueda', 'Sergio', 'Rueda', '81dc9bdb52d04dc20036dbd8313ed055', 's.rueda@gmail.com', '3453453453', NULL);
 
 --
--- Constraints for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Constraints for table `contact`
+-- Indices de la tabla `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id_contact`),
+  ADD KEY `fk_user_contact` (`id_user_contact`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `contact`
 --
 ALTER TABLE `contact`
   ADD CONSTRAINT `fk_user_contact` FOREIGN KEY (`id_user_contact`) REFERENCES `user` (`id_user`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
