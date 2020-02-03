@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 03, 2020 at 04:28 PM
+-- Generation Time: Feb 03, 2020 at 04:49 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -20,8 +20,6 @@ USE `mycontactsdb`;
 
 --
 -- Table structure for table `contact`
---
--- Creation: Feb 03, 2020 at 04:10 PM
 --
 
 CREATE TABLE `contact` (
@@ -52,15 +50,22 @@ INSERT INTO `contact` (`id_contact`, `img_contact`, `firstname_contact`, `lastna
 (6, NULL, 'Marc', 'Paradell Gato', '876543234', '987654321', '123456765', 'gato@gmail.com', 'parad@gmail.com', NULL, NULL, 2),
 (7, NULL, 'Joel', 'Fandos Sánchez', '987654321', '983454322', NULL, 'fandos@gmail.com', 'joel@gmail.com', NULL, NULL, 3),
 (8, NULL, 'Raul', 'Vazquez Pedrera', '987654321', '123456543', NULL, 'raul@gmail.com', NULL, NULL, NULL, 3),
-(9, NULL, 'Dainel', 'Sanchez Garcia', '987654321', NULL, NULL, 'dshchez@gmail.com', NULL, NULL, NULL, 3);
+(9, NULL, 'Dainel', 'Sanchez Garcia', '987654321', NULL, NULL, 'dshchez@gmail.com', NULL, NULL, NULL, 3),
+(13, NULL, 'Agnes', 'Plans Berenguer', '987654321', '123456789', '765432345', 'aplans@gmail.com', NULL, NULL, NULL, 1),
+(14, NULL, 'Danny', 'Larrea Argudo', '987654321', NULL, '123456789', 'dlarrea@gmail.com', 'dlao@gmail.com', NULL, NULL, 1),
+(15, NULL, 'Sergio', 'Garcia Jimenez', '987654321', NULL, '123456789', 'sgarcia@gmail.com', 'ss@gmail.com', NULL, NULL, 1),
+(16, NULL, 'Ignasi', 'Romero Garcia', '987654321', NULL, NULL, 'iromero@gmail.com', 'ignaa@gmail.com', NULL, NULL, 1),
+(17, NULL, 'Toni', 'Fernandez Rios', '987654321', '123456789', '345678765', 'toni@gmail.com', NULL, NULL, NULL, 1),
+(18, NULL, 'Gerard', 'Orobitg Boyer', '234567890', NULL, '123456789', 'boyer@gmail.com', 'gerard@gmail.com', NULL, NULL, 1),
+(19, '', 'Marta', 'Carbó Casanellas', '123456789', '987654345', '123456789', 'mcarbo@gmail.com', NULL, NULL, NULL, 2),
+(20, NULL, 'Helena', 'Niubó Bonsom', '123456789', '123456765', '234567898', 'niubo@gmail.com', NULL, NULL, NULL, 2),
+(21, NULL, 'Joan', 'Cañis Parera', '123456789', '567898765', NULL, 'jcañis@gmail.com', NULL, NULL, NULL, 3),
+(22, NULL, 'Joan', 'Grasses Falcó', '987654321', NULL, '123432123', 'jgrasses@gmail.com', NULL, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `prefixes`
---
--- Creation: Feb 03, 2020 at 04:22 PM
--- Last update: Feb 03, 2020 at 04:27 PM
 --
 
 CREATE TABLE `prefixes` (
@@ -82,9 +87,6 @@ INSERT INTO `prefixes` (`prefix`, `country`) VALUES
 
 --
 -- Table structure for table `user`
---
--- Creation: Feb 03, 2020 at 04:07 PM
--- Last update: Feb 03, 2020 at 04:07 PM
 --
 
 CREATE TABLE `user` (
@@ -132,7 +134,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user`
