@@ -96,3 +96,53 @@ function ValidacionInsert(){
         showErrors=false;
 return respuesta;
 }
+
+window.onload = consultar;
+function objetoAjax(){
+	var xmlhttp=false;
+	try {
+		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	} catch (e) {
+		try {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		} catch (E) {
+			xmlhttp = false;
+		}
+	}
+	if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+	  xmlhttp = new XMLHttpRequest();
+	}
+	return xmlhttp;
+}
+
+/*Muestra registros de la base de datos*/
+function consultar(){
+	divResultado = document.getElementById('contactos');
+	contacto = document.getElementById('contacto').value;
+	var ajax2=objetoAjax();
+	ajax2.open("POST", "./procesa/busqueda.php", true);
+	if(contacto==''){
+		ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		ajax2.send("q=1");
+	}else{
+
+		ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		ajax2.send("q="+contacto);
+	}
+		
+
+	ajax2.onreadystatechange=function() {
+		if (ajax2.readyState==4 && ajax2.status==200) {
+			var respuesta2=JSON.parse(this.responseText);
+			var tabla = '<table>';
+			for(var i=0;i<respuesta2.length;i++) {
+
+				tabla +='<tr><td>'+respuesta2[i].firstname_contact+'</td></tr>';
+				
+			}
+			tabla+='</table>';
+			divResultado.innerHTML=tabla;
+		}
+	}
+
+}
