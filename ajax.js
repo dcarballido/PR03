@@ -137,7 +137,7 @@ function consultar(){
 			var tabla = '<table>';
 			for(var i=0;i<respuesta2.length;i++) {
 
-				tabla +='<tr onclick="infocontacto('+respuesta2[i].id_contact+')"><td>'+respuesta2[i].firstname_contact+'</td></tr>';
+				tabla +='<tr onclick="infocontacto('+respuesta2[i].id_contact+')"><td>'+respuesta2[i].firstname_contact+' '+respuesta2[i].lastname_contact+'</td></tr>';
 				
 			}
 			tabla+='</table>';
