@@ -137,7 +137,7 @@ function consultar(){
 			var tabla = '<table>';
 			for(var i=0;i<respuesta2.length;i++) {
 
-				tabla +='<tr><td>'+respuesta2[i].firstname_contact+'</td></tr>';
+				tabla +='<tr onclick="infocontacto('+respuesta2[i].id_contact+')"><td>'+respuesta2[i].firstname_contact+'</td></tr>';
 				
 			}
 			tabla+='</table>';
@@ -146,3 +146,45 @@ function consultar(){
 	}
 
 }
+
+// Visualizar info contacto
+
+function infocontacto(id){
+
+	// 2. Definimos el bloque que queremos que cambie
+	divResultado = document.getElementById('infores');
+	// 3. Inicializamos el objeto XHR
+	ajax=objetoAjax();
+	// 4. Especificamos la solicitud
+	ajax.open('POST', './procesa/infoContacto.php', true);
+	// 5. Configuramos el encabezado (POST)
+	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	// 6. Enviamos la solicitud
+	ajax.send("id="+id)
+	// 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+	ajax.onreadystatechange=function() {
+	  	if (ajax.readyState==4) {
+			// 8. Cambiamos el bloque del paso 2.
+			divResultado.innerHTML = ajax.responseText
+		}
+	}
+}
+
+// Visualizar imagen nueva
+
+function init() {
+	var inputFile = document.getElementById('inputFile1');
+	inputFile.addEventListener('change', mostrarImagen, false);
+  }
+  
+  function mostrarImagen(event) {
+	var file = event.target.files[0];
+	var reader = new FileReader();
+	reader.onload = function(event) {
+	  var img = document.getElementById('img1');
+	  img.src= event.target.result;
+	}
+	reader.readAsDataURL(file);
+  }
+  
+  window.addEventListener('load', init, false);
