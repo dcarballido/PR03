@@ -1,9 +1,9 @@
 <?php
   include "conexion.php";
   if($_REQUEST['q']!='1'){
-  	$cons="SELECT * FROM `contact` WHERE `contact`.`id_user_contact` = '2' AND `contact`.`firstname_contact` LIKE '%".$_REQUEST['q']."%'";
+  	$cons="SELECT * FROM `contact` WHERE `contact`.`id_user_contact` = '1' AND `contact`.`firstname_contact` LIKE '%".$_REQUEST['q']."% ' OR `contact`.`lastname_contact` LIKE '%".$_REQUEST['q']."%'";
   }else{
-  	$cons="SELECT * FROM `contact` WHERE `contact`.`id_user_contact` = '2'";
+  	$cons="SELECT * FROM `contact` WHERE `contact`.`id_user_contact` = '1'";
   }
 
   $sql=mysqli_query($conn,$cons);
